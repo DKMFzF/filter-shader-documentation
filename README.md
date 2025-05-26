@@ -1,1 +1,1 @@
-# Dilter shader documentation
+# Filter shader documentation
