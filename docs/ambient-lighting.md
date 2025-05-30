@@ -1,5 +1,7 @@
 <h1>Shader Lighting Normal Documentation</h1>
 
+```version change v1.0 - v.1.2```
+
 <p>This document provides an overview of the shader for lighting in Minecraft <code>gbuffers_terrain.vsh</code> and <code>gbuffers_terrain.fsh</code> shader files. The Minecraft computes face normals in the vertex shader and utilizes them in the fragment shader for directional lighting calculations.</p>
 
 <h2>Theoretical base</h2>
