@@ -1,5 +1,7 @@
 <h1>Shader Filter System Documentation</h1>
 
+```version change v1.0```
+
 ***Some functions and formulas may be displayed incorrectly on the GitHub page. In order to fully open the documentation, it is better to clone this repository to your computer and open it in your IDE.***
 
 I do all the filter manipulations in the ```composite.fsh file```.
