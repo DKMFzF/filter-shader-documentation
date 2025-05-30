@@ -2,11 +2,13 @@
 
 ***Some functions and formulas may be displayed incorrectly on the GitHub page. In order to fully open the documentation, it is better to clone this repository to your computer and open it in your IDE.***
 
-<p>This document describes a GLSL-based image filter system that applies various post-processing effects to image data. Each effect is implemented as a color transformation function, operating in linear RGB space unless otherwise noted.</p>
+I do all the filter manipulations in the ```composite.fsh file```.
 
-<h2>Color Mixing Utility</h2>
+<p>This document describes a filter system for minecraft that applies various post-processing effects to image data. Each effect is implemented as a color conversion function operating in RGB linear space, unless otherwise specified.</p>
 
-<h3>make_color</h3>
+<h2 id="color-mixing-utility">Color Mixing Utility</h2>
+
+```make_color```
 
 ```glsl
 vec3 make_color(in vec3 base_color, in vec3 mix_color, in float amount)
@@ -45,9 +47,9 @@ vec3 make_color(in vec3 base_color, in vec3 mix_color, in float amount)
 
 <p>Where α is the <code>amount</code> parameter. This linear interpolation forms the foundation for many subsequent effects.</p>
 
-<h2>Sepia Tone</h2>
+<h2 id="sepia-tone">Sepia Tone</h2>
 
-<h3>sepia</h3>
+```sepia```
 
 ```glsl
 vec3 sepia(in vec3 color)
@@ -123,9 +125,9 @@ vec3 sepia(in vec3 color)
 
 <br>
 
-<h2>Grayscale Conversion</h2>
+<h2 id="grayscale-conversion">Grayscale Conversion</h2>
 
-<h3>grayscale</h3>
+```grayscale```
 
 ```glsl
 vec3 grayscale(in vec3 color, in float intensity)
@@ -178,9 +180,9 @@ vec3 grayscale(in vec3 color, in float intensity)
   </mfenced>
 </math>
 
-<h2>Color Inversion</h2>
+<h2 id="color-inversion">Color Inversion</h2>
 
-<h3>invert</h3>
+```invert```
 
 ```glsl
 vec3 invert(in vec3 color)
@@ -207,9 +209,9 @@ vec3 invert(in vec3 color)
 </math>
 </div>
 
-<h2>Film Grain & Vignette</h2>
+<h2 id="film-grain-vignette">Film Grain & Vignette</h2>
 
-<h3>oldFilm</h3>
+```oldFilm```
 
 ```glsl
 vec3 oldFilm(vec3 color, vec2 uv)
@@ -301,9 +303,9 @@ vec3 oldFilm(vec3 color, vec2 uv)
 </math>
 </div>
 
-<h2>Contrast Adjustment</h2>
+<h2 id="contrast-adjustment">Contrast Adjustment</h2>
 
-<h3>effectContrast</h3>
+```effectContrast```
 
 ```glsl
 vec3 effectContrast(in vec3 color, in float value)
@@ -349,9 +351,9 @@ vec3 effectContrast(in vec3 color, in float value)
   <li><code>k ≤ -1</code>: Collapses all colors to 0.5 (undefined behavior)</li>
 </ul>
 
-<h2>Brightness Adjustment</h2>
+<h2 id="brightness-adjustment">Brightness Adjustment</h2>
 
-<h3>effectBrightness</h3>
+```effectBrightness```
 
 ```glsl
 vec3 effectBrightness(in vec3 color, in float value)
@@ -378,9 +380,9 @@ vec3 effectBrightness(in vec3 color, in float value)
 
 <p>Where Δ is the brightness offset. Note that values may exceed [0,1] range.</p>
 
-<h2>Saturation Control</h2>
+<h2 id="saturation-control">Saturation Control</h2>
 
-<h3>effectSaturation</h3>
+```effectSaturation```
 
 ```glsl
 vec3 effectSaturation(vec3 color, float value)
@@ -442,9 +444,9 @@ vec3 effectSaturation(vec3 color, float value)
   <li><code>s < 0</code>: Inverted luminance relationships (artistic effect)</li>
 </ul>
 
-<h2>Selective Blur</h2>
+<h2 id="selective-blur">Selective Blur</h2>
 
-<h3>effectSelectiveBlur</h3>
+```effectSelectiveBlur```
 
 ```glsl
 vec3 effectSelectiveBlur(
