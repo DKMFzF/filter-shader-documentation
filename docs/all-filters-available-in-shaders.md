@@ -1,3 +1,4 @@
+<h1>Shader Filter System Documentation</h1>
 
 <p>This document describes a GLSL-based image filter system that applies various post-processing effects to image data. Each effect is implemented as a color transformation function, operating in linear RGB space unless otherwise noted.</p>
 
@@ -20,7 +21,8 @@ vec3 make_color(in vec3 base_color, in vec3 mix_color, in float amount)
 </ul>
 
 <p><strong>Mathematical Formulation:</strong></p>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<div align="center">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub><mi>C</mi><mi>out</mi></msub>
   <mo>=</mo>
   <mo>(</mo>
@@ -35,6 +37,9 @@ vec3 make_color(in vec3 base_color, in vec3 mix_color, in float amount)
   <mo>⋅</mo>
   <msub><mi>C</mi><mi>mix</mi></msub>
 </math>
+</div>
+
+<br>
 
 <p>Where α is the <code>amount</code> parameter. This linear interpolation forms the foundation for many subsequent effects.</p>
 
@@ -59,47 +64,62 @@ vec3 sepia(in vec3 color)
 
 <p><strong>Mathematical Breakdown:</strong></p>
 <p>1. Luminance calculation:</p>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <mi>L</mi>
-  <mo>=</mo>
-  <mn>0.299</mn>
-  <msub><mi>C</mi><mi>R</mi></msub>
-  <mo>+</mo>
-  <mn>0.587</mn>
-  <msub><mi>C</mi><mi>G</mi></msub>
-  <mo>+</mo>
-  <mn>0.114</mn>
-  <msub><mi>C</mi><mi>B</mi></msub>
-</math>
+
+<div align="center">
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mi>L</mi>
+    <mo>=</mo>
+    <mn>0.299</mn>
+    <msub><mi>C</mi><mi>R</mi></msub>
+    <mo>+</mo>
+    <mn>0.587</mn>
+    <msub><mi>C</mi><mi>G</mi></msub>
+    <mo>+</mo>
+    <mn>0.114</mn>
+    <msub><mi>C</mi><mi>B</mi></msub>
+  </math>
+</div>
+
+<br>
 
 <p>2. Tint application and blending:</p>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub><mi>C</mi><mi>sepia</mi></msub>
-  <mo>=</mo>
-  <mi>L</mi>
-  <mo>⋅</mo>
-  <mfenced open="(" close=")">
-    <mtable>
-      <mtr><mtd><mn>1.2</mn></mtd></mtr>
-      <mtr><mtd><mn>1.0</mn></mtd></mtr>
-      <mtr><mtd><mn>0.8</mn></mtd></mtr>
-    </mtable>
-  </mfenced>
-</math>
+
+<div align="center">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub><mi>C</mi><mi>sepia</mi></msub>
+    <mo>=</mo>
+    <mi>L</mi>
+    <mo>⋅</mo>
+    <mfenced open="(" close=")">
+      <mtable>
+        <mtr><mtd><mn>1.2</mn></mtd></mtr>
+        <mtr><mtd><mn>1.0</mn></mtd></mtr>
+        <mtr><mtd><mn>0.8</mn></mtd></mtr>
+      </mtable>
+    </mfenced>
+  </math>
+</div>
+
+<br>
 
 <p>3. Final blending:</p>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <msub><mi>C</mi><mi>out</mi></msub>
-  <mo>=</mo>
-  <mi>mix</mi>
-  <mfenced>
-    <msub><mi>C</mi><mi>in</mi></msub>
-    <mo>,</mo>
-    <msub><mi>C</mi><mi>sepia</mi></msub>
-    <mo>,</mo>
-    <mn>0.75</mn>
-  </mfenced>
-</math>
+
+<div align="center">
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+    <msub><mi>C</mi><mi>out</mi></msub>
+    <mo>=</mo>
+    <mi>mix</mi>
+    <mfenced>
+      <msub><mi>C</mi><mi>in</mi></msub>
+      <mo>,</mo>
+      <msub><mi>C</mi><mi>sepia</mi></msub>
+      <mo>,</mo>
+      <mn>0.75</mn>
+    </mfenced>
+  </math>
+</div>
+
+<br>
 
 <h2>Grayscale Conversion</h2>
 
@@ -116,6 +136,8 @@ vec3 grayscale(in vec3 color, in float intensity)
 <p><strong>Description:</strong> Converts to grayscale using arithmetic mean (unweighted average) with controllable intensity.</p>
 
 <p><strong>Mathematical Formulation:</strong></p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>L</mi><mi>avg</mi></msub>
   <mo>=</mo>
@@ -130,6 +152,7 @@ vec3 grayscale(in vec3 color, in float intensity)
     <mn>3</mn>
   </mfrac>
 </math>
+</div>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>out</mi></msub>
@@ -167,7 +190,9 @@ vec3 invert(in vec3 color)
 <p><strong>Description:</strong> Computes the photographic negative of the input color through component-wise subtraction.</p>
 
 <p><strong>Mathematical Definition:</strong></p>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+
+<div align="center">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
   <msub><mi>C</mi><mi>out</mi></msub>
   <mo>=</mo>
   <mfenced open="(" close=")">
@@ -178,6 +203,7 @@ vec3 invert(in vec3 color)
     </mtable>
   </mfenced>
 </math>
+</div>
 
 <h2>Film Grain & Vignette</h2>
 
@@ -202,7 +228,9 @@ vec3 oldFilm(vec3 color, vec2 uv)
 <p><strong>Description:</strong> Combines procedural noise generation with radial darkening to simulate vintage film characteristics.</p>
 
 <p><strong>Component 1: Grain Generation</strong></p>
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+
+<div align="center">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>N</mi>
   <mo>=</mo>
   <mi>fract</mi>
@@ -223,6 +251,7 @@ vec3 oldFilm(vec3 color, vec2 uv)
     </mrow>
   </mfenced>
 </math>
+</div>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>grain</mi></msub>
@@ -233,7 +262,11 @@ vec3 oldFilm(vec3 color, vec2 uv)
   <mi>N</mi>
 </math>
 
+<br>
+
 <p><strong>Component 2: Vignette Effect</strong></p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>V</mi>
   <mo>=</mo>
@@ -250,6 +283,7 @@ vec3 oldFilm(vec3 color, vec2 uv)
     <mn>1</mn>
   </msup>
 </math>
+</div>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>out</mi></msub>
@@ -275,6 +309,8 @@ vec3 effectContrast(in vec3 color, in float value)
 <p><strong>Description:</strong> Performs linear contrast adjustment centered at mid-gray (0.5).</p>
 
 <p><strong>Mathematical Operation:</strong></p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>out</mi></msub>
   <mo>=</mo>
@@ -295,6 +331,9 @@ vec3 effectContrast(in vec3 color, in float value)
     </mrow>
   </mfenced>
 </math>
+</div>
+
+<br>
 
 <p>Where <code>k</code> is the contrast parameter:</p>
 <ul>
@@ -318,6 +357,8 @@ vec3 effectBrightness(in vec3 color, in float value)
 <p><strong>Description:</strong> Simple additive brightness control.</p>
 
 <p><strong>Mathematical Definition:</strong></p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>out</mi></msub>
   <mo>=</mo>
@@ -325,6 +366,9 @@ vec3 effectBrightness(in vec3 color, in float value)
   <mo>+</mo>
   <mi>Δ</mi>
 </math>
+</div>
+
+<br>
 
 <p>Where Δ is the brightness offset. Note that values may exceed [0,1] range.</p>
 
@@ -344,6 +388,8 @@ vec3 effectSaturation(vec3 color, float value)
 
 <p><strong>Mathematical Process:</strong></p>
 <p>1. Luminance extraction (same as sepia):</p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>L</mi>
   <mo>=</mo>
@@ -356,8 +402,13 @@ vec3 effectSaturation(vec3 color, float value)
   <mn>0.114</mn>
   <msub><mi>C</mi><mi>B</mi></msub>
 </math>
+</div>
+
+<br>
 
 <p>2. Saturation adjustment:</p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>out</mi></msub>
   <mo>=</mo>
@@ -373,6 +424,9 @@ vec3 effectSaturation(vec3 color, float value)
   <mi>s</mi>
   <mi>L</mi>
 </math>
+</div>
+
+<br>
 
 <p>Where <code>s</code> is the saturation parameter:</p>
 <ul>
@@ -419,6 +473,8 @@ vec3 effectSelectiveBlur(
 
 <p><strong>Mathematical Components:</strong></p>
 <p>1. Radial distance calculation:</p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>d</mi>
   <mo>=</mo>
@@ -428,8 +484,13 @@ vec3 effectSelectiveBlur(
     <msup><mfenced><mrow><mi>v</mi><mo>−</mo><mn>0.5</mn></mrow></mfenced><mn>2</mn></msup>
   </msqrt>
 </math>
+</div>
+
+<br>
 
 <p>2. Blur strength mapping:</p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <mi>α</mi>
   <mo>=</mo>
@@ -458,8 +519,13 @@ vec3 effectSelectiveBlur(
     </mrow>
   </mfenced>
 </math>
+</div>
+
+<br>
 
 <p>3. Sample accumulation:</p>
+
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>out</mi></msub>
   <mo>=</mo>
@@ -494,6 +560,7 @@ vec3 effectSelectiveBlur(
     </mrow>
   </mfenced>
 </math>
+</div>
 
 <p>Where:</p>
 <ul>
