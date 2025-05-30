@@ -1,5 +1,7 @@
 <h1>Shader Filter System Documentation</h1>
 
+***Some functions and formulas may be displayed incorrectly on the GitHub page. In order to fully open the documentation, it is better to clone this repository to your computer and open it in your IDE.***
+
 <p>This document describes a GLSL-based image filter system that applies various post-processing effects to image data. Each effect is implemented as a color transformation function, operating in linear RGB space unless otherwise noted.</p>
 
 <h2>Color Mixing Utility</h2>
@@ -253,6 +255,7 @@ vec3 oldFilm(vec3 color, vec2 uv)
 </math>
 </div>
 
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>grain</mi></msub>
   <mo>=</mo>
@@ -261,6 +264,7 @@ vec3 oldFilm(vec3 color, vec2 uv)
   <mn>0.25</mn>
   <mi>N</mi>
 </math>
+</div>
 
 <br>
 
@@ -285,6 +289,7 @@ vec3 oldFilm(vec3 color, vec2 uv)
 </math>
 </div>
 
+<div align="center">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <msub><mi>C</mi><mi>out</mi></msub>
   <mo>=</mo>
@@ -294,6 +299,7 @@ vec3 oldFilm(vec3 color, vec2 uv)
   <mo>⋅</mo>
   <msub><mi>C</mi><mi>grain</mi></msub>
 </math>
+</div>
 
 <h2>Contrast Adjustment</h2>
 
