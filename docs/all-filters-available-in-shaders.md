@@ -51,6 +51,8 @@ vec3 make_color(in vec3 base_color, in vec3 mix_color, in float amount)
 
 ```sepia```
 
+![](../img/sepia.png)
+
 ```glsl
 vec3 sepia(in vec3 color)
 {
@@ -127,6 +129,8 @@ vec3 sepia(in vec3 color)
 
 <h2 id="grayscale-conversion">Grayscale Conversion</h2>
 
+![](../img/gray.png)
+
 ```grayscale```
 
 ```glsl
@@ -182,6 +186,8 @@ vec3 grayscale(in vec3 color, in float intensity)
 
 <h2 id="color-inversion">Color Inversion</h2>
 
+![](../img/invert.png)
+
 ```invert```
 
 ```glsl
@@ -210,6 +216,8 @@ vec3 invert(in vec3 color)
 </div>
 
 <h2 id="film-grain-vignette">Film Grain & Vignette</h2>
+
+![](../img/grain.png)
 
 ```oldFilm```
 
@@ -305,6 +313,8 @@ vec3 oldFilm(vec3 color, vec2 uv)
 
 <h2 id="contrast-adjustment">Contrast Adjustment</h2>
 
+![](../img/contrast.png)
+
 ```effectContrast```
 
 ```glsl
@@ -353,6 +363,8 @@ vec3 effectContrast(in vec3 color, in float value)
 
 <h2 id="brightness-adjustment">Brightness Adjustment</h2>
 
+![](../img/brightness.png)
+
 ```effectBrightness```
 
 ```glsl
@@ -381,6 +393,8 @@ vec3 effectBrightness(in vec3 color, in float value)
 <p>Where Δ is the brightness offset. Note that values may exceed [0,1] range.</p>
 
 <h2 id="saturation-control">Saturation Control</h2>
+
+![](../img/saturation.png)
 
 ```effectSaturation```
 
@@ -445,6 +459,8 @@ vec3 effectSaturation(vec3 color, float value)
 </ul>
 
 <h2 id="selective-blur">Selective Blur</h2>
+
+![](../img/blur.png)
 
 ```effectSelectiveBlur```
 
