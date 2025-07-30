@@ -1,4 +1,4 @@
-# Sun Glare (Lens Flare) Documentation
+# Sun Glare
 
 Sun glare, often referred to as **lens flare**, is a visual effect that simulates the scattering of light within a camera lens when a bright light source (like the sun) is in or near the frame. It typically appears as a series of circles, halos, or streaks of light. In real-time rendering, this effect enhances realism and the perception of a bright sun.
 
